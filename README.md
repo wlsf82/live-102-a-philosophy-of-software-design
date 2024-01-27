@@ -59,7 +59,7 @@ Anotações sobre o livro [_A philosophy of Software Design_](https://www.amazon
 >
 > “Quando você lê o código dos outros, pense sobre… como isso se relaciona com a complexidade do código.”
 
-### Bandeiras vermelhas - _red flags_
+### Sinais de alerta - _red flags_
 
 > “Quanto mais alternativas você tentar antes de corrigir um problema, mais você aprenderá.”
 >
@@ -233,7 +233,7 @@ private void addNullValueForAttribute(String attribute) {
 
 São necessários ainda mais pressionamentos de tecla para invocar o método do que seria necessário para manipular a variável de dados diretamente. O método adiciona complexidade (na forma de uma nova interface para os/as desenvolvedores/as aprenderem), mas não oferece benefícios compensatórios.
 
-#### Bandeiras vermelhas (_red flags_): módulos superficiais
+#### Sinais de alerta (_red flags_): módulos superficiais
 
 Um módulo superficial é aquele cuja interface é complicada em relação à funcionalidade que fornece. Módulos superficiais não ajudam muito na batalha contra a complexidade, porque o benefício que eles oferecem (não ter que aprender como funcionam internamente) é anulado pelo custo de aprendizado e uso de suas interfaces. Módulos pequenos tendem a ser superficiais.
 
@@ -256,5 +256,39 @@ As interfaces devem ser projetadas para tornar o caso comum o mais simples poss�
 Ao separar a interface de um módulo de sua implementação, podemos ocultar a complexidade da implementação do resto do sistema. Os usuários de um módulo precisam apenas entender a abstração fornecida por sua interface. A questão mais importante no design de classes e outros módulos é torná-los profundos, para que tenham interfaces simples para os casos de uso comuns, mas ainda assim forneçam funcionalidades significativas. Isso maximiza a quantidade de complexidade oculta.
 
 ## Capítulo 5 - Ocultação (e vazamento) de informações
+
+Técnicas para a criação de módulos profundos
+
+### Ocultação de informações
+
+A técnica mais importante para obter módulos profundos é ocultar informações.
+
+A ideia básica é que cada módulo encapsula alguns conhecimentos, que representam decisões de design. O conhecimento está embutido na implementação do módulo, mas não aparece em sua interface, portanto não é visível para outros módulos.
+
+Exemplo:
+
+- Como analisar documentos JSON
+
+As informações ocultas incluem estruturas de dados e algoritmos relacionados ao mecanismo.
+
+A ocultação de informações reduz a complexidade de duas maneiras. Primeiro, simplifica a interface para um módulo. A interface reflete uma visão mais simples e abstrata da funcionalidade do módulo e oculta os detalhes; isso reduz a carga cognitiva dos/as desenvolvedores/as que usam o módulo. Em segundo lugar, a ocultação de informações facilita a evolução do sistema. Se uma informação estiver oculta, não há dependências dessa informação fora do módulo que contém a informação, portanto, uma alteração de design relacionada a essa informação afetará apenas um módulo.
+
+Ao projetar um novo módulo, você deve pensar cuidadosamente sobre quais informações podem estar ocultas nesse módulo. Se você puder ocultar mais informações, também poderá simplificar a interface do módulo, e isso torna o módulo mais profundo.
+
+Nota: ocultar variáveis e métodos em uma classe declarando-os privados não é a mesma coisa que ocultar informações. Elementos privados podem ajudar na ocultação de informações, pois impossibilitam que os itens sejam acessados diretamente de fora da classe. No entanto, as informações sobre o item privado ainda podem ser expostas por meio de métodos públicos, como métodos _getter_ e _setter_. Quando isso acontece, a natureza e o uso das variáveis ficam tão expostos como se as variáveis fossem públicas.
+
+A melhor forma de ocultar informações é quando as informações ficam totalmente ocultas dentro de um módulo, de forma que sejam irrelevantes e invisíveis para os usuários do módulo.
+
+### Vazamento de informação
+
+O oposto de ocultar informações é o vazamento de informações. O vazamento de informações ocorre quando uma decisão de design é refletida em vários módulos. Isto cria uma dependência entre os módulos: qualquer alteração nessa decisão de design exigirá alterações em todos os módulos envolvidos.
+
+Interfaces mais simples tendem a se correlacionar com uma melhor ocultação de informações.
+
+O vazamento de informações é um dos sinais de alerta mais importantes no design de software. Uma das melhores habilidades que você pode aprender como designer de software é um alto nível de sensibilidade ao vazamento de informações.
+
+Se as classes afetadas forem relativamente pequenas e estiverem intimamente ligadas às informações vazadas, pode fazer sentido fundi-las em uma única classe. Outra abordagem possível é extrair as informações de todas as classes afetadas e criar uma nova classe que encapsule apenas essas informações. No entanto, essa abordagem só será eficaz se você encontrar uma interface simples que abstraia os detalhes.
+
+### Decomposição temporal
 
 TBD.
