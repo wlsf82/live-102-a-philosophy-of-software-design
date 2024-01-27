@@ -103,7 +103,7 @@ Anotações sobre o livro [_A philosophy of Software Design_](https://www.amazon
 >
 > “Se um sistema tem um design limpo e óbvio, então necessitará de menos documentação. A necessidade de muita documentação é frequentemente uma bandeira vermelha de que o design não está certo. A melhor forma de reduzir a obscuridade é simplificar o design do sistema.”
 >
-> “Dependências levam à amplificação da mudança e alta carga cognitiva. A obscuridade cria desconhecidos desconhecidos (o que você não sabe que não sabe) e também contribui à carga cognitiva. Se pudermos encontrar técnicas para minimizar dependências e obscuridade, então poderemos reduzir a complexidade do software.”
+> “Dependências levam à amplificação da mudança e alta carga cognitiva. A obscuridade cria incgógitas desconhecidas (o que você não sabe que não sabe) e também contribui à carga cognitiva. Se pudermos encontrar técnicas para minimizar dependências e obscuridade, então poderemos reduzir a complexidade do software.”
 
 ### A complexidade é incremental
 
@@ -164,5 +164,79 @@ Anotações sobre o livro [_A philosophy of Software Design_](https://www.amazon
 > "A abordagem mais efetiva é aquela onde todo engenheiro faz pequenos investimentos contínuos em um bom design.
 
 ## Capítulo 4 - Módulos devem ser profundos
+
+Uma das técnicas mais importantes para gerenciar a complexidade do software é projetar sistemas de modo que os/as desenvolvedores/as só precisem enfrentar uma pequena fração da complexidade geral em um determinado momento.
+
+### Design modular
+
+No design modular, um sistema de software é decomposto em uma coleção de módulos relativamente independentes.
+
+O objetivo do design modular é minimizar as dependências entre os módulos. Para gerenciar dependências, pensamos em cada módulo em duas partes: uma interface e uma implementação. A interface consiste em tudo que um/uma desenvolvedor/ad trabalhando em um módulo diferente deve saber para usar o módulo determinado.
+
+A interface descreve o que o módulo faz, mas não como o faz. A implementação consiste no código que cumpre as promessas feitas pela interface.
+
+Um/uma desenvolvedor/a não deve precisar entender as implementações de um módulo diferente daquele em que está trabalhando.
+
+Um módulo é qualquer unidade de código que possui uma interface e uma implementação.
+
+Os melhores módulos são aqueles cujas interfaces são muito mais simples que suas implementações.
+
+Uma interface simples minimiza a complexidade que um módulo impõe ao resto do sistema.
+
+Se um módulo for modificado de uma forma que não altere sua interface, nenhum outro módulo será afetado pelas modificações. Se a interface de um módulo for muito mais simples que sua implementação, haverá muitos aspectos do módulo que poderão ser alterados sem afetar outros módulos.
+
+### O que é uma interface?
+
+A interface formal de um método é sua assinatura, que inclui os nomes e tipos de seus parâmetros, o tipo de seu valor de retorno e informações sobre exceções lançadas pelo método.
+
+A interface formal de uma classe consiste na assinatura de todos os seus métodos públicos, além dos nomes e tipos de quaisquer variáveis públicas.
+
+Um dos benefícios de uma interface claramente especificada é que ela indica exatamente o que os desenvolvedores precisam saber para usar o módulo associado. Isso ajuda a eliminar as “incógnitas desconhecidas”.
+
+### Abstrações
+
+Uma abstração é uma visão simplificada de qualquer entidade, que omite detalhes sem importância. As abstrações são úteis porque tornam mais fácil pensar e manipular coisas complexas.
+
+Na programação modular, cada módulo fornece uma abstração na forma de sua interface. A interface apresenta uma visão simplificada da funcionalidade do módulo; os detalhes da implementação não são importantes do ponto de vista da abstração do módulo, portanto são omitidos da interface.
+
+A palavra “sem importância” é crucial. Quanto mais detalhes sem importância forem omitidos de uma abstração, melhor.
+
+Uma abstração pode dar errado de duas maneiras. Primeiro, pode incluir detalhes que não são realmente importantes; o que aumenta a carga cognitiva dos/as desenvolvedores/as que usam a abstração. A segunda é a obscuridade: os/as desenvolvedores/as que olham apenas para a abstração não terão todas as informações necessárias para usar a abstração corretamente.
+
+A chave para projetar abstrações é entender o que é importante e procurar designs que minimizem a quantidade de informações importantes.
+
+### Módulos profundos
+
+Os melhores módulos são aqueles que fornecem funcionalidades poderosas, mas possuem interfaces mais simples.
+
+Os melhores módulos são profundos: eles permitem que muitas funcionalidades sejam acessadas por meio de uma interface simples. Um módulo superficial é aquele com uma interface relativamente complexa, mas sem muita funcionalidade: não esconde muita complexidade.
+
+Os melhores módulos são profundos: eles possuem muitas funcionalidades escondidas atrás de uma interface simples. Um módulo profundo é uma boa abstração porque apenas uma pequena fração de sua complexidade interna é visível para seus usuários.
+
+A profundidade dos módulos é uma forma de pensar sobre custo versus benefício. O custo de um módulo (em termos de complexidade do sistema) é a sua interface. A interface de um módulo representa a complexidade que o módulo impõe ao resto do sistema: os menores são aqueles com maior benefício e menor custo. Interfaces são boas, mas interfaces maiores não são necessariamente melhores!
+
+Módulos profundos, como Unix I/O e _garbade collectors_, fornecem abstrações poderosas porque são fáceis de usar, mas ocultam uma complexidade significativa de implementação.
+
+### Módulos superficiais
+
+Um módulo superficial é aquele cuja interface é relativamente complexa em comparação com a funcionalidade que fornece.
+
+A complexidade de uma interface de lista vinculada é quase tão grande quanto a complexidade de sua implementação.
+
+Exemplo:
+
+```
+private void addNullValueForAttribute(String attribute) {
+    data.put(attribute null);
+}
+```
+
+São necessários ainda mais pressionamentos de tecla para invocar o método do que seria necessário para manipular a variável de dados diretamente. O método adiciona complexidade (na forma de uma nova interface para os/as desenvolvedores/as aprenderem), mas não oferece benefícios compensatórios.
+
+#### Bandeiras vermelhas (_red flags_): módulos superficiais
+
+Um módulo superficial é aquele cuja interface é complicada em relação à funcionalidade que fornece. Módulos superficiais não ajudam muito na batalha contra a complexidade, porque o benefício que eles oferecem (não ter que aprender como funcionam internamente) é anulado pelo custo de aprendizado e uso de suas interfaces. Módulos pequenos tendem a ser superficiais.
+
+### Classitis
 
 TBD.
