@@ -59,7 +59,7 @@ Anotações sobre o livro [_A philosophy of Software Design_](https://www.amazon
 >
 > “Quando você lê o código dos outros, pense sobre… como isso se relaciona com a complexidade do código.”
 
-### Sinais de alerta - _red flags_
+#### Sinal de alerta - _red flag_
 
 > “Quanto mais alternativas você tentar antes de corrigir um problema, mais você aprenderá.”
 >
@@ -233,9 +233,9 @@ private void addNullValueForAttribute(String attribute) {
 
 São necessários ainda mais pressionamentos de tecla para invocar o método do que seria necessário para manipular a variável de dados diretamente. O método adiciona complexidade (na forma de uma nova interface para os/as desenvolvedores/as aprenderem), mas não oferece benefícios compensatórios.
 
-#### Sinais de alerta (_red flags_): módulos superficiais
+#### Sinal de alerta (_red flag_): módulos superficiais
 
-Um módulo superficial é aquele cuja interface é complicada em relação à funcionalidade que fornece. Módulos superficiais não ajudam muito na batalha contra a complexidade, porque o benefício que eles oferecem (não ter que aprender como funcionam internamente) é anulado pelo custo de aprendizado e uso de suas interfaces. Módulos pequenos tendem a ser superficiais.
+> Um módulo superficial é aquele cuja interface é complicada em relação à funcionalidade que fornece. Módulos superficiais não ajudam muito na batalha contra a complexidade, porque o benefício que eles oferecem (não ter que aprender como funcionam internamente) é anulado pelo custo de aprendizado e uso de suas interfaces. Módulos pequenos tendem a ser superficiais.
 
 ### Classitis
 
@@ -290,5 +290,63 @@ O vazamento de informações é um dos sinais de alerta mais importantes no desi
 Se as classes afetadas forem relativamente pequenas e estiverem intimamente ligadas às informações vazadas, pode fazer sentido fundi-las em uma única classe. Outra abordagem possível é extrair as informações de todas as classes afetadas e criar uma nova classe que encapsule apenas essas informações. No entanto, essa abordagem só será eficaz se você encontrar uma interface simples que abstraia os detalhes.
 
 ### Decomposição temporal
+
+Na decomposição temporal, a estrutura de um sistema corresponde à ordem temporal em que as operações ocorrerão.
+
+#### Sinal de alerta (_red flag_):
+
+> O vazamento de informações ocorre quando o mesmo conhecimento é usado em vários locais, como duas classes diferentes que entendem o formato de um determinado tipo de arquivo.
+
+É fácil cair na armadilha da decomposição temporal, porque a ordem em que as operações devem ocorrer geralmente está em sua mente quando você codifica. Entretanto, a maioria das decisões de design se manifesta em vários momentos diferentes ao longo da vida da aplicação; como resultado, a decomposição temporal muitas vezes resulta em vazamento de informações.
+
+Ao projetar módulos, concentre-se no conhecimento necessário para executar cada tarefa, não na ordem em que as tarefas ocorrem.
+
+#### Sinal de alerta (_red flag_):
+
+> Na decomposição temporal, a ordem de execução é refletida na estrutura do código: operações que acontecem em momentos diferentes estão em métodos e classes diferentes. Se o mesmo conhecimento for usado em diferentes pontos da execução, ele será codificado em vários locais, resultando em vazamento de informações.
+
+### Exemplo: muitas classes
+
+O erro mais comum cometido pelos alunos foi dividir seu código em um grande número de classes superficiais, o que levou ao vazamento de informações entre as classes.
+
+Muitas vezes, a ocultação de informações pode ser melhorada tornando a classe um pouco maior. Uma razão para fazer isso é reunir todo o código relacionado a um recurso específico, de modo que a classe resultante contenha tudo relacionado a esse recurso.
+
+### Exemplo: Tratamento de parâmetros HTTP
+
+A ocultação de informações resultou em APIs mais simples para o código usando o módulo HTTP.
+
+É importante evitar ao máximo expor estruturas de dados internas.
+
+### Exemplo: padrões em respostas HTTP
+
+O erro mais comum cometido pelos alunos nesta área foi a definição inadequada de padrões.
+
+Os padrões ilustram o princípio de que as interfaces devem ser projetadas para tornar o caso comum o mais simples possível. Eles também são um exemplo de ocultação parcial de informações: no caso normal, o _caller_ não precisa estar ciente da existência do item padrão. Nos raros casos em que um _caller_ precisa substituir um padrão, ele terá que saber o valor e poderá invocar um método especial para modificá-lo.
+
+Sempre que possível, as classes devem “fazer a coisa certa” sem serem explicitamente solicitadas. Os padrões são um exemplo disso.
+
+Os melhores recursos são aqueles que você obtém sem saber que eles existem.
+
+#### Sinal de alerta (_red flag_):
+
+> Se a API do recurso comumente usado forçar os usuários a aprender sobre outros recursos que raramente são usados, isso aumentará a carga cognitiva dos usuários que não precisam dos recursos raramente usados.
+
+### Informações escondidas dentro de uma classe
+
+Tente projetar os métodos privados dentro de uma classe de modo que cada método encapsule alguma informação ou capacidade e oculte-a do resto da classe. Além disso, tente minimizar o número de locais onde cada variável de instância é usada. Algumas variáveis podem precisar ser acessadas amplamente em toda a classe, mas outras podem ser necessárias apenas em alguns lugares; se você puder reduzir o número de locais onde uma variável é usada, eliminará dependências dentro da classe e reduzirá sua complexidade.
+
+### Indo longe demais
+
+Se as informações forem necessárias fora do módulo, você não deverá ocultá-las.
+
+Como um/uma "designer" de software, seu objetivo deve ser minimizar a quantidade de informações necessárias fora de um módulo; por exemplo, se um módulo puder ajustar automaticamente sua configuração, isso é melhor do que expor parâmetros de configuração. Mas é importante reconhecer quais informações são necessárias fora de um módulo e garantir que elas sejam expostas.
+
+### Conclusão
+
+A ocultação de informações e os módulos profundos estão intimamente relacionados. Se um módulo oculta muitas informações, isso tende a aumentar a quantidade de funcionalidades fornecidas pelo módulo, ao mesmo tempo que reduz sua interface. Isso torna o módulo mais profundo. Por outro lado, se um módulo não oculta muitas informações, então ele não possui muitas funcionalidades ou possui uma interface complexa; de qualquer forma, o módulo é superficial.
+
+Ao decompor um sistema em módulos, procure não se deixar influenciar pela ordem em que as operações ocorrerão em tempo de execução; isso o/a conduzirá ao caminho da decomposição temporal, o que resultará em vazamento de informações e módulos superficiais. Em vez disso, pense nos diferentes conhecimentos necessários para realizar as tarefas de sua aplicação e projete cada módulo para encapsular alguns desses conhecimentos. Isso produzirá um design limpo e simples com módulos profundos.
+
+## Capítulo 6 - Módulos de uso geral são mais profundos
 
 TBD.
