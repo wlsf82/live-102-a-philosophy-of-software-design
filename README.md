@@ -239,4 +239,22 @@ Um módulo superficial é aquele cuja interface é complicada em relação à fu
 
 ### Classitis
 
+Freqüentemente, os/as alunos/as aprendem que a coisa mais importante no design de classes é dividir classes maiores em classes menores. O mesmo conselho é frequentemente dado sobre métodos.
+
+Essa abordagem resulta em um grande número de classes e métodos superficiais, que adicionam complexidade geral ao sistema.
+
+O extremo da abordagem “as classes devem ser pequenas” é uma síndrome que chamo de classitis.
+
+Classes pequenas também resultam em um estilo de programação detalhado, devido ao padrão exigido para cada classe.
+
+### Exemplos: Java e Unix I/O
+
+As interfaces devem ser projetadas para tornar o caso comum o mais simples possível.
+
+### Conclusão
+
+Ao separar a interface de um módulo de sua implementação, podemos ocultar a complexidade da implementação do resto do sistema. Os usuários de um módulo precisam apenas entender a abstração fornecida por sua interface. A questão mais importante no design de classes e outros módulos é torná-los profundos, para que tenham interfaces simples para os casos de uso comuns, mas ainda assim forneçam funcionalidades significativas. Isso maximiza a quantidade de complexidade oculta.
+
+## Capítulo 5 - Ocultação (e vazamento) de informações
+
 TBD.
