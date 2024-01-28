@@ -349,4 +349,46 @@ Ao decompor um sistema em módulos, procure não se deixar influenciar pela orde
 
 ## Capítulo 6 - Módulos de uso geral são mais profundos
 
-TBD.
+Uma das decisões mais comuns que você enfrentará ao projetar um novo módulo é implementá-lo de maneira geral ou especial. Alguns poderão argumentar que se deve adoptar uma abordagem de objetivo geral, na qual se implementa um mecanismo que pode ser usado para resolver uma vasta gama de problemas, e não apenas aqueles que são importantes hoje em dia. Neste caso, o novo mecanismo poderá encontrar utilizações imprevistas no futuro, poupando assim tempo.
+
+Por outro lado, sabemos que é difícil prever as necessidades futuras de um sistema de software; portanto, uma solução de uso geral pode incluir recursos que nunca serão realmente necessários. Além disso, se você implementar algo de propósito muito geral, pode não ser um bom trabalho para resolver o problema específico que você tem hoje. Como resultado, alguns podem argumentar que é melhor focar nas necessidades de hoje, construindo apenas o que você sabe que precisa e especializando-o para a forma como você planeja usá-lo hoje. Se você adotar uma abordagem de propósito especial e descobrir usos adicionais posteriormente, poderá sempre refatorá-la para torná-la de uso geral. A abordagem de propósito especial parece consistente com uma abordagem incremental ao desenvolvimento de software.
+
+### Torne as aulas de uso geral
+
+O ponto ideal é implementar novos módulos de uma forma um tanto geral. A frase "de uma forma um tanto geral" significa que a funcionalidade do módulo deve refletir suas necessidades atuais, mas sua interface não. Em vez disso, a interface deve ser geral o suficiente para suportar múltiplos usos. Essa interface deve ser fácil de usar para as necessidades atuais, sem estar vinculada especificamente a elas.
+
+O benefício mais importante (e talvez surpreendente) da abordagem de propósito geral é que ela resulta em interfaces mais simples e profundas do que uma abordagem de propósito especial. A abordagem de uso geral também pode economizar tempo no futuro, se você reutilizar a classe para outros fins. No entanto, mesmo que os módulos sejam utilizados apenas para o seu propósito original, a abordagem de propósito geral é ainda melhor devido à sua simplicidade.
+
+### Exemplo: classificando texto para um editor
+
+Os alunos provavelmente pensaram que seria mais fácil implementar a interface do usuário se os métodos da classe texto correspondessem aos recursos visíveis aos usuários. Na realidade, porém, essa especialização proporcionou poucos benefícios para o código da interface do usuário e criou uma alta carga cognitiva para os/as desenvolvedores/as que trabalham na interface do usuário ou na classe de texto.
+
+Muitos dos métodos, como `delete`, foram invocados apenas em um único local.
+
+Um dos objetivos do design de classes é permitir que cada classe seja desenvolvida de forma independente.
+
+### Uma API de uso mais geral
+
+Com a API de texto de uso geral, o código para implementar a interface do usuário é um pouco mais longo do que com a abordagem original usando uma API de texto especializada. No entanto, o novo código é mais óbvio que o código antigo.
+
+A abordagem de propósito geral tem menos código geral do que a abordagem especializada, pois substitui um grande número de métodos de propósito especial na classe de texto por um número menor de métodos de propósito geral.
+
+### A generalidade leva a uma melhor ocultação de informações
+
+Colocar o método na classe de texto apenas torna mais difícil para os/as desenvolvedores/as de interface de usuário obter as informações de que precisam.
+
+Quando os detalhes são importantes, é melhor torná-los explícitos e tão óbvios quanto possível.
+
+### Perguntas para se questionar a si mesmo
+
+**Qual é a interface mais simples que cobrirá todas as minhas necessidades atuais?** Se você reduzir o número de métodos em uma API sem reduzir seus recursos gerais, provavelmente estará criando métodos de uso mais geral.
+
+Reduzir o número de métodos só faz sentido desde que a API de cada método individual permaneça simples.
+
+**Em quantas situações esse método será utilizado?** Se um método for projetado para um uso específico, isso é um sinal de alerta de que ele pode ter um propósito muito especial.
+
+**Esta API é fácil de usar para minhas necessidades atuais?** Esta pergunta pode ajudá-lo/a a determinar quando você foi longe demais ao tornar uma API simples e de uso geral. Se você tiver que escrever muito código adicional para usar uma classe para seu propósito atual, isso é um sinal de alerta de que a interface não fornece a funcionalidade correta.
+
+### Conclusão
+
+As interfaces de uso geral têm muitas vantagens sobre as de uso especial. Elas tendem a ser mais simples, com menos métodos mais profundos. Eles também fornecem uma separação mais limpa entre as classes. Tornar seus módulos de uso geral é uma das melhores maneiras de reduzir a complexidade geral do sistema.
