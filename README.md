@@ -1,4 +1,4 @@
-# Live TAT - Uma filosofia de design de software
+# Lives TAT - Uma filosofia de design de software
 
 Anotações sobre o livro [_A philosophy of Software Design_](https://www.amazon.com/Philosophy-Software-Design-2nd/dp/173210221X/), do autor John Ousterhout, o qual é professor do curso de ciência da computação na universidade de Stanford, nos Estados Unidos da América.
 
