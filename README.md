@@ -257,7 +257,7 @@ Ao separar a interface de um módulo de sua implementação, podemos ocultar a c
 
 ## Capítulo 5 - Ocultação (e vazamento) de informações
 
-Técnicas para a criação de módulos profundos
+Técnicas para a criação de módulos profundos.
 
 ### Ocultação de informações
 
