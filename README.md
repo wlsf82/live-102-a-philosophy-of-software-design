@@ -393,7 +393,7 @@ Reduzir o número de métodos só faz sentido desde que a API de cada método in
 
 ### Conclusão
 
-As interfaces de uso geral têm muitas vantagens sobre as de uso especial. Elas tendem a ser mais simples, com menos métodos mais profundos. Eles também fornecem uma separação mais limpa entre as classes. Tornar seus módulos de uso geral é uma das melhores maneiras de reduzir a complexidade geral do sistema.
+As interfaces de uso geral têm muitas vantagens sobre as de uso especial. Elas tendem a ser mais simples, com menos métodos mais profundos. Elas também fornecem uma separação mais limpa entre as classes. Tornar seus módulos de uso geral é uma das melhores maneiras de reduzir a complexidade geral do sistema.
 
 ## Capítulo 7 - Diferentes camadas, diferentes abstrações
 
