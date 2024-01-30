@@ -171,7 +171,7 @@ Uma das técnicas mais importantes para gerenciar a complexidade do software é 
 
 No design modular, um sistema de software é decomposto em uma coleção de módulos relativamente independentes.
 
-O objetivo do design modular é minimizar as dependências entre os módulos. Para gerenciar dependências, pensamos em cada módulo em duas partes: uma interface e uma implementação. A interface consiste em tudo que um/uma desenvolvedor/ad trabalhando em um módulo diferente deve saber para usar o módulo determinado.
+O objetivo do design modular é minimizar as dependências entre os módulos. Para gerenciar dependências, pensamos em cada módulo em duas partes: uma interface e uma implementação. A interface consiste em tudo que um/uma desenvolvedor/a trabalhando em um módulo diferente deve saber para usar o módulo determinado.
 
 A interface descreve o que o módulo faz, mas não como o faz. A implementação consiste no código que cumpre as promessas feitas pela interface.
 
