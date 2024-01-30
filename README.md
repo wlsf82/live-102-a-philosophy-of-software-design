@@ -329,7 +329,7 @@ Sempre que possível, as classes devem “fazer a coisa certa” sem serem expli
 
 Os melhores recursos são aqueles que você obtém sem saber que eles existem.
 
-#### Sinal de alerta (_red flag_):
+#### Sinal de alerta (_red flag_) - Superexposição:
 
 > Se a API do recurso comumente usado forçar os usuários a aprender sobre outros recursos que raramente são usados, isso aumentará a carga cognitiva dos usuários que não precisam dos recursos raramente usados.
 
