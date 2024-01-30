@@ -275,7 +275,7 @@ A ocultação de informações reduz a complexidade de duas maneiras. Primeiro, 
 
 Ao projetar um novo módulo, você deve pensar cuidadosamente sobre quais informações podem estar ocultas nesse módulo. Se você puder ocultar mais informações, também poderá simplificar a interface do módulo, e isso torna o módulo mais profundo.
 
-Nota: ocultar variáveis e métodos em uma classe declarando-os privados não é a mesma coisa que ocultar informações. Elementos privados podem ajudar na ocultação de informações, pois impossibilitam que os itens sejam acessados diretamente de fora da classe. No entanto, as informações sobre o item privado ainda podem ser expostas por meio de métodos públicos, como métodos _getter_ e _setter_. Quando isso acontece, a natureza e o uso das variáveis ficam tão expostos como se as variáveis fossem públicas.
+**Obs.:** ocultar variáveis e métodos em uma classe declarando-os privados não é a mesma coisa que ocultar informações. Elementos privados podem ajudar na ocultação de informações, pois impossibilitam que os itens sejam acessados diretamente de fora da classe. No entanto, as informações sobre o item privado ainda podem ser expostas por meio de métodos públicos, como métodos _getter_ e _setter_. Quando isso acontece, a natureza e o uso das variáveis ficam tão expostos como se as variáveis fossem públicas.
 
 A melhor forma de ocultar informações é quando as informações ficam totalmente ocultas dentro de um módulo, de forma que sejam irrelevantes e invisíveis para os usuários do módulo.
 
