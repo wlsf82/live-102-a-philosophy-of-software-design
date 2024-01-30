@@ -191,7 +191,7 @@ A interface formal de um método é sua assinatura, que inclui os nomes e tipos 
 
 A interface formal de uma classe consiste na assinatura de todos os seus métodos públicos, além dos nomes e tipos de quaisquer variáveis públicas.
 
-Um dos benefícios de uma interface claramente especificada é que ela indica exatamente o que os desenvolvedores precisam saber para usar o módulo associado. Isso ajuda a eliminar as “incógnitas desconhecidas”.
+Um dos benefícios de uma interface claramente especificada é que ela indica exatamente o que os/as desenvolvedores/as precisam saber para usar o módulo associado. Isso ajuda a eliminar as “incógnitas desconhecidas”.
 
 ### Abstrações
 
