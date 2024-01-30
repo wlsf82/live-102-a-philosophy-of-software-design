@@ -293,7 +293,7 @@ Se as classes afetadas forem relativamente pequenas e estiverem intimamente liga
 
 Na decomposição temporal, a estrutura de um sistema corresponde à ordem temporal em que as operações ocorrerão.
 
-#### Sinal de alerta (_red flag_):
+#### Sinal de alerta (_red flag_) - Vazamento de informações:
 
 > O vazamento de informações ocorre quando o mesmo conhecimento é usado em vários locais, como duas classes diferentes que entendem o formato de um determinado tipo de arquivo.
 
@@ -301,7 +301,9 @@ Na decomposição temporal, a estrutura de um sistema corresponde à ordem tempo
 
 Ao projetar módulos, concentre-se no conhecimento necessário para executar cada tarefa, não na ordem em que as tarefas ocorrem.
 
-#### Sinal de alerta (_red flag_):
+### Exemplo: Servidor HTTP
+
+#### Sinal de alerta (_red flag_) - Decomposição temporal:
 
 > Na decomposição temporal, a ordem de execução é refletida na estrutura do código: operações que acontecem em momentos diferentes estão em métodos e classes diferentes. Se o mesmo conhecimento for usado em diferentes pontos da execução, ele será codificado em vários locais, resultando em vazamento de informações.
 
