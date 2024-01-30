@@ -355,7 +355,7 @@ Uma das decisões mais comuns que você enfrentará ao projetar um novo módulo 
 
 Por outro lado, sabemos que é difícil prever as necessidades futuras de um sistema de software; portanto, uma solução de uso geral pode incluir recursos que nunca serão realmente necessários. Além disso, se você implementar algo de propósito muito geral, pode não ser um bom trabalho para resolver o problema específico que você tem hoje. Como resultado, alguns podem argumentar que é melhor focar nas necessidades de hoje, construindo apenas o que você sabe que precisa e especializando-o para a forma como você planeja usá-lo hoje. Se você adotar uma abordagem de propósito especial e descobrir usos adicionais posteriormente, poderá sempre refatorá-la para torná-la de uso geral. A abordagem de propósito especial parece consistente com uma abordagem incremental ao desenvolvimento de software.
 
-### Torne as aulas de uso geral
+### Torne as classes de uso geral
 
 O ponto ideal é implementar novos módulos de uma forma um tanto geral. A frase "de uma forma um tanto geral" significa que a funcionalidade do módulo deve refletir suas necessidades atuais, mas sua interface não. Em vez disso, a interface deve ser geral o suficiente para suportar múltiplos usos. Essa interface deve ser fácil de usar para as necessidades atuais, sem estar vinculada especificamente a elas.
 
