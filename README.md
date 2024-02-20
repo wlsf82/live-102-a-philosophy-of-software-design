@@ -359,7 +359,7 @@ Por outro lado, sabemos que é difícil prever as necessidades futuras de um sis
 
 O ponto ideal é implementar novos módulos de uma forma um tanto geral. A frase "de uma forma um tanto geral" significa que a funcionalidade do módulo deve refletir suas necessidades atuais, mas sua interface não. Em vez disso, a interface deve ser geral o suficiente para suportar múltiplos usos. Essa interface deve ser fácil de usar para as necessidades atuais, sem estar vinculada especificamente a elas.
 
-O benefício mais importante (e talvez surpreendente) da abordagem de propósito geral é que ela resulta em interfaces mais simples e profundas do que uma abordagem de propósito especial. A abordagem de uso geral também pode economizar tempo no futuro, se você reutilizar a classe para outros fins. No entanto, mesmo que os módulos sejam utilizados apenas para o seu propósito original, a abordagem de propósito geral é ainda melhor devido à sua simplicidade.
+O benefício mais importante (e talvez surpreendente) da abordagem de propósito geral é que ela resulta em interfaces mais simples e profundas do que uma abordagem de propósito específico. A abordagem de uso geral também pode economizar tempo no futuro, se você reutilizar a classe para outros fins. No entanto, mesmo que os módulos sejam utilizados apenas para o seu propósito original, a abordagem de propósito geral é ainda melhor devido à sua simplicidade.
 
 ### Exemplo: classificando texto para um editor
 
