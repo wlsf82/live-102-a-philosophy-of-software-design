@@ -397,4 +397,8 @@ As interfaces de uso geral têm muitas vantagens sobre as de uso especial. Elas 
 
 ## Capítulo 7 - Diferentes camadas, diferentes abstrações
 
-TBD.
+Os sistemas de software são compostos em camadas, onde as camadas superiores utilizam as facilidades fornecidas pelas camadas inferiores. Num sistema bem projetado, cada camada fornece uma abstração diferente das camadas acima e abaixo dela; se você seguir uma única operação à medida que ela sobe e desce pelas camadas invocando métodos, as abstrações mudam a cada chamada de método.
+
+Se um sistema contém camadas adjacentes com abstrações semelhantes, isso é um sinal de alerta que sugere um problema com a decomposição de classes.
+
+...
