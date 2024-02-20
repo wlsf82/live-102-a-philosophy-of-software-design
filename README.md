@@ -381,7 +381,7 @@ Colocar o método na classe de texto apenas torna mais difícil para os/as desen
 
 Quando os detalhes são importantes, é melhor torná-los explícitos e tão óbvios quanto possível.
 
-### Perguntas para se questionar a si mesmo
+### Perguntas para questionar a si mesmo
 
 **Qual é a interface mais simples que cobrirá todas as minhas necessidades atuais?** Se você reduzir o número de métodos em uma API sem reduzir seus recursos gerais, provavelmente estará criando métodos de uso mais geral.
 
